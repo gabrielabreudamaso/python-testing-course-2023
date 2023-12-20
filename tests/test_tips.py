@@ -1,7 +1,21 @@
+import pytest
+class NegativeValueError(Exception):
+    """Bill and percentage should be positive"""
+    pass
+    
 # Function que j'ai envie d'implémenter
 def total_with_tip(bill, percentage):
-    total = bill + (percentage/100*bill)
-    return total
+    if bill <0 :
+        raise NegativeValueError("Bill should be positive")
+    if percentage <0 :
+        raise NegativeValueError("Percentage should be positive")
+    tip = bill* percentage/100 
+    if tip>500:
+        tip = 500
+    total = bill + tip
+    if total < 5:
+        total = 5
+    return round(total,2)
 
 # TDD - Test Driven Development
 # 1. Pour un repas à *100€* (bill), et un tips de *20%*(percentage) : Je laisse sur la table *120€*(output/return).
@@ -29,11 +43,20 @@ def test_min_total():
 
 # 4. Vérifer que l'arrondie du total est bien sur deux décimales
 def test_two_decimals():
-    assert total_with_tip(5, 12.45) == 6.27
-    assert total_with_tip(10.12,15) == 11.63
+    assert total_with_tip(5, 12.45) == 5.62
+    assert total_with_tip(10.12, 15) == 11.64
     assert total_with_tip(10, 2.33) == 10.23
     
 
 # 5. Adater votre function d'implementation pour passer les tests
 
 # TODO:Tester les pourcentages -> Exception 
+
+def test_negative_error():
+    with pytest.raises(NegativeValueError) as exceptionTips:
+        total_with_tip(100,-10)
+    assert str(exceptionTips.value) == "Percentage should be positive"
+
+    with pytest.raises(NegativeValueError) as exceptionBill:
+        total_with_tip(-10,10)
+    assert str(exceptionBill.value) == "Bill should be positive"
