@@ -1,14 +1,17 @@
 import pytest
+# Exception definition
 class NegativeValueError(Exception):
     """Bill and percentage should be positive"""
     pass
     
 # Function que j'ai envie d'implémenter
 def total_with_tip(bill, percentage):
+    # Customize Exception messages
     if bill <0 :
         raise NegativeValueError("Bill should be positive")
     if percentage <0 :
         raise NegativeValueError("Percentage should be positive")
+    
     tip = bill* percentage/100 
     if tip>500:
         tip = 500
