@@ -1,0 +1,35 @@
+Exercice Restaurant Review
+ 
+Setup 
+Créer fichier restaurant_reviews.py contenant Classe RestaurantReviews 
+
+Boostrap Code a ajouter dans le dossier test:
+__init__.py
+
+Créer plusieurs fichiers test pour chaque function / partie : 
+- *test_add_review.py*
+- *test_get_review.py*
+- *test_update_review.py*
+
+
+
+Pour chaque functionalité, créer un fichier de test dans pytest (dossier tests): 
+1. **Test pour Ajouter un Avis (`test_add_review.py`) :**
+    - Testez l'ajout d'un avis valide.
+    - Testez l'ajout d'un avis avec une note invalide (par exemple, note > 5).
+
+2. **Test pour Obtenir un Avis (`test_get_review.py`) :**
+    - Testez la récupération d'un avis pour un restaurant existant.
+    - Testez la récupération d'un avis pour un restaurant qui n'existe pas.
+
+3. **Test pour Mettre à Jour un Avis (`test_update_review.py`) :**
+    - Testez la mise à jour d'un avis existant.
+    - Testez la mise à jour d'un avis pour un restaurant qui n'existe pas.
+
+
+Exercice : Proposez des tests et une implémentation pour une fonction de Delete !
+
+4. **Test poru supprimer un avis (`test_delete_review.py`) :**
+- Supprimez un avis existant.
+- Essayez de supprimer un avis qui n'existe pas.
+
